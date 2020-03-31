@@ -6,31 +6,16 @@
 //  Copyright © 2020 Jean Pierre VALLS. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-enum PlayerType: Int {
-    case cartel
-    case cosaNostra
-
-    func characters() -> [Character]{
-        if self == PlayerType.cartel{
-            return [Character(name: "Rico"), Character(name: "Pablo"), Character(name: "Armando")]
-            
-        }
-        return [Character(name: "Tony"), Character(name: "Jimmy"), Character(name: "Ricky")]
+//Creation of a player class
+class Player {
+    let name: String
+    var characters: [Character] = []
+    
+    init(name: String) {
+        self.name = name
         
     }
-}
-
-class Player {
-    var name: String
-    var type: PlayerType
-    var characters: [Character]
     
-    init(name: String, type: PlayerType) {
-        self.name = name
-        self.type = type
-        self.characters = type.characters()
-    }
-
 }

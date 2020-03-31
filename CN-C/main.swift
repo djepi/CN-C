@@ -8,5 +8,10 @@
 
 import Foundation
 
-print("Hello, World!")
+//The first thing that appears when de game is launched
+print("Bienvenue dans CosaNostra VS Cartel")
 
+var game: Game = Game.startGame()
+
+game.createTeams() //Call function createdTeams
+game.startBattle() //Call function startBattle

@@ -6,16 +6,29 @@
 //  Copyright © 2020 Jean Pierre VALLS. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
+//Creation of a character class
 class Character {
-    var name: String
-    var weapon: Weapon
+    let name: String
+    let weapon: Weapon
+    var health: Int = 100
     
     init(name: String) {
         self.name = name
-        self.weapon = Weapon.randomWeapon()   //initialiser Weapon avec une valeur aléatoire
-
+        self.weapon = Weapon.randomWeapon()   //initialize Weapon with random value
+        
     }
-
+    
+    
+    //Creation of a heal function to get back points
+    func heal() {
+        if self.health <= 80 {
+            self.health += 20
+        } else {
+            self.health = 100
+            
+        }
+        
+    }
 }
