@@ -133,7 +133,7 @@ class Game {
     }
     
     func attackPlayer(receiver: Player, with attacker: Character) {
-        //Demande au joueur quel caractère de l'équipe adversaire (receiver) il veut attaquer - implémzenter le switch + le defaut (je ne comprends pas) - rajouter un break popur la compilation
+        //Demande au joueur quel caractère de l'équipe adverse (receiver) il veut attaquer - implémzenter le switch + le defaut (je ne comprends pas) - rajouter un break popur la compilation
         
     }
     
