@@ -27,8 +27,18 @@ class Character {
             self.health += 20
         } else {
             self.health = 100
-            
         }
         
     }
+    
+    
+    func receive(damage: Int) {
+        health -= damage
+    }
+    
+    
+    func isDead() -> Bool {
+        return health <= 0
+    }
 }
+

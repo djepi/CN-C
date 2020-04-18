@@ -15,7 +15,10 @@ class Player {
     
     init(name: String) {
         self.name = name
-        
+    }
+    
+    func isDead() -> Bool {
+        return  characters[0].isDead() && characters[1].isDead() && characters[2].isDead()
     }
     
 }

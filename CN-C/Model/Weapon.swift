@@ -27,10 +27,9 @@ class Weapon {
     init(type: WeaponType, damage: Int) {
         self.type = type
         self.damage = damage
-        
     }
     
- //Creation of a function with random choice of weapon and damage
+    //Creation of a function with random choice of weapon and damage
     static func randomWeapon() -> Weapon {
         let randomType = WeaponType(rawValue: Int.random(in: 0 ..< WeaponType.allCases.count))!
         let randomDamage = Int.random(in: 0 ..< 21 )

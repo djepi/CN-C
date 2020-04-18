@@ -9,7 +9,7 @@
 import Foundation
 
 //The first thing that appears when de game is launched
-print("Bienvenue dans CosaNostra VS Cartel")
+print("Welcome to CosaNostra VS Cartel \n")
 
 var game: Game = Game.startGame()
 
