@@ -17,9 +17,27 @@ enum WeaponType: Int, CaseIterable {
     case magnum
     case special
     case browning
+    
+    var name: String {
+        switch self {
+        case .glock:
+            return "Glock"
+        case .colt:
+            return "Colt"
+        case .fusilAPompe:
+            return "Shotgun"
+        case .magnum:
+            return "Magnum44"
+        case .special:
+            return "38Spécial"
+        case .browning:
+            return "Machine Gun"
+        }
+    }
+    
 }
 
-//Creation of a weapon class with constants and initialization of them
+//The WEAPON class contains a weapon type and damages
 class Weapon {
     let type: WeaponType
     let damage: Int
@@ -29,10 +47,12 @@ class Weapon {
         self.damage = damage
     }
     
-    //Creation of a function with random choice of weapon and damage
+    //Creation of a function with random choice of weapon and damages
     static func randomWeapon() -> Weapon {
         let randomType = WeaponType(rawValue: Int.random(in: 0 ..< WeaponType.allCases.count))!
-        let randomDamage = Int.random(in: 0 ..< 21 )
+        let randomDamage = Int.random(in: 0 ..< 21 )    //The damage will always be between zero and 20 life pts
         return Weapon(type: randomType, damage: randomDamage)
     }
+    
+    
 }

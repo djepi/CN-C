@@ -49,8 +49,8 @@
 		81DE7AB624044DB900361A62 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				81DE7AB024044D8C00361A62 /* Character.swift */,
 				81DE7AB224044D8C00361A62 /* Player.swift */,
+				81DE7AB024044D8C00361A62 /* Character.swift */,
 				81DE7AB124044D8C00361A62 /* Weapon.swift */,
 			);
 			path = Model;

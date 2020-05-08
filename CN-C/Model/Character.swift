@@ -8,11 +8,11 @@
 
 import Foundation
 
-//Creation of a character class
+//The creation of the Character class gives a name, a weapon and health for each character
 class Character {
     let name: String
-    let weapon: Weapon
-    var health: Int = 100
+    var weapon: Weapon
+    var health: Int = 100   //Here, health is predefined
     
     init(name: String) {
         self.name = name
@@ -21,22 +21,27 @@ class Character {
     }
     
     
-    //Creation of a heal function to get back points
+    //Creation of a heal function to get life points back
+    //If you want to heal a character when his life points are between 80 and infinity, the game will display 100 life pts
+    //From 79 life pts, if you heal, the game will add 20 pts
     func heal() {
-        if self.health <= 80 {
-            self.health += 20
-        } else {
+        if self.health >= 80 {
             self.health = 100
+        }   else {
+            self.health += 20
         }
         
     }
     
-    
+    //Creation of a function to remove life points
     func receive(damage: Int) {
         health -= damage
+        if health < 0 {
+            health = 0      //From 0 life pts to negative infinity, the game will display 0 life pts
+        }
     }
     
-    
+    //which indicates that a character is dead if his health is equal to or less than zero
     func isDead() -> Bool {
         return health <= 0
     }
