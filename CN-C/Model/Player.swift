@@ -16,7 +16,6 @@ class Player {
     init(name: String) {
         self.name = name
     }
-    
     //Function that will indicate if one of a character is dead
     func isDead() -> Bool {
         return  characters[0].isDead() && characters[1].isDead() && characters[2].isDead()

@@ -19,7 +19,7 @@ class Game {
         self.player1 = player1
         self.player2 = player2
     }
-    //Creation of a static function which defines the players's name
+    //Static function which defines the players's name
     static func startGame() -> Game {
         print("Enter player name 1")
         let player1Name = readLine() ?? "Cosa Nostra"
@@ -31,7 +31,6 @@ class Game {
         
         return Game(player1: player1, player2: player2)
     }
-    
     //Function that creates the characters'name for each player (Teams: 3 characters for 2 players).
     func createTeams() {
         let player1Character1 = createCharacter(player: player1, fallBack: "TONY")
@@ -48,7 +47,6 @@ class Game {
         player2.characters.append(player2Character3)
         
     }
-    
     //This function will be used to choose the name of the characters of each player
     func createCharacter(player: Player, fallBack: String) -> Character {
         print("\n\(player.name), what is your character's name \(player.characters.count + 1) ?")
@@ -69,7 +67,6 @@ class Game {
         return Character(name: characterName)
         
     }
-    
     //Function which is used to start counting laps
     func startBattle() {
         var counter = 0
@@ -78,9 +75,7 @@ class Game {
             playRound(round: counter)
         }
         endGame(counter: counter) //Stop counting laps
-        
     }
-    
     //This function will tell who to play - The player's turn
     func playRound(round: Int) {
         let result = round % 2
@@ -97,7 +92,6 @@ class Game {
         print("\nIt's your turn \(player.name) !")
         chooseCharacter(player: player, receiver: receiver)
     }
-    
     //Function which makes a chest appear randomly at the player's turn
     func shouldDisplayChest(character: Character) {
         let randomNumber = Int.random(in: 0...4)
@@ -108,7 +102,6 @@ class Game {
             print("This chest contains a new weapon. It's \(newWeapon.type.name) and it gives \(newWeapon.damage) pts")
         }
     }
-    
     //Function to choose the character with who the player wants to play
     func chooseCharacter(player: Player, receiver: Player) {
         print("Which character do you want to play with ?"
@@ -156,7 +149,6 @@ class Game {
         makeAction(character: choosedCharacter, receiver: receiver)
         
     }
-    
     //Function where we choose to attack or heal
     func makeAction(character: Character, receiver: Player) {
         print("\nWhat do you want to do with \(character.name) ?"
@@ -175,8 +167,6 @@ class Game {
             }
         }
     }
-    
-    
     //Function which chooses the opposing character to attack and which launches the attack
     func attackPlayer(receiver: Player, attacker: Character) {
         print("\nWich opposing character do you want to attack ?"
@@ -222,7 +212,6 @@ class Game {
             }
             
         }
-        
         //Tell us who was attacked, by who, with which weapon and damage points
         choosedReceiver.receive(damage: attacker.weapon.damage)
         print("\(choosedReceiver.name) just got a \(attacker.name) attack with a \(attacker.weapon.type.name), and lose \(attacker.weapon.damage) life pts")
@@ -235,7 +224,6 @@ class Game {
             displayWinner()
         }
     }
-    
     //Function that will display the winner
     func displayWinner() {
         isGameRunning = false
@@ -247,23 +235,23 @@ class Game {
         }
         
     }
-    
     //Function that will display the requested game statistics
     func statisticsGame(counter: Int) {
+        //Display number of rounds in the game
         print("In this party, there were \(counter) rounds")
+        //Displays the names of player1's characters, their remaining life points, and the weapon used
         print("Here are some stats for \(player1.name) :"
             + "\n For \(player1.characters[0].name), \(player1.characters[0].health) life pts left and his LoveMachine is a \(player1.characters[0].weapon.type.name)"
             + "\n For \(player1.characters[1].name), \(player1.characters[1].health) life pts left and his LoveMachine is a \(player1.characters[1].weapon.type.name)"
             + "\n For \(player1.characters[2].name), \(player1.characters[2].health) life pts left and his LoveMachine is a \(player1.characters[2].weapon.type.name)",
             
+            ////Displays the names of player2's characters, their remaining life points, and the weapon used
             "\nHere are some stats for \(player2.name) :"
                 + "\n For \(player2.characters[0].name), \(player2.characters[0].health) life pts left and his LoveMachine is a \(player2.characters[0].weapon.type.name)"
                 + "\n For \(player2.characters[1].name), \(player2.characters[1].health) life pts left and his LoveMachine is a \(player2.characters[1].weapon.type.name)"
                 + "\n For \(player2.characters[2].name), \(player2.characters[2].health) life pts left and his LoveMachine is a \(player2.characters[2].weapon.type.name)")
         
-        
     }
-    
     //Function which indicates the end of the game and which displays the game's statistics
     func endGame(counter: Int) {
         if player1.isDead() || player2.isDead() {
@@ -273,5 +261,3 @@ class Game {
     }
     
 }
-
-

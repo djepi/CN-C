@@ -36,7 +36,6 @@ enum WeaponType: Int, CaseIterable {
     }
     
 }
-
 //The WEAPON class contains a weapon type and damages
 class Weapon {
     let type: WeaponType
@@ -46,13 +45,10 @@ class Weapon {
         self.type = type
         self.damage = damage
     }
-    
-    //Creation of a function with random choice of weapon and damages
+    //Static function with random choice of weapon and damages
     static func randomWeapon() -> Weapon {
         let randomType = WeaponType(rawValue: Int.random(in: 0 ..< WeaponType.allCases.count))!
         let randomDamage = Int.random(in: 0 ..< 21 )    //The damage will always be between zero and 20 life pts
         return Weapon(type: randomType, damage: randomDamage)
     }
-    
-    
 }

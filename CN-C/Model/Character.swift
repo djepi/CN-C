@@ -19,8 +19,6 @@ class Character {
         self.weapon = Weapon.randomWeapon()   //initialize Weapon with random value
         
     }
-    
-    
     //Creation of a heal function to get life points back
     //If you want to heal a character when his life points are between 80 and infinity, the game will display 100 life pts
     //From 79 life pts, if you heal, the game will add 20 pts
@@ -32,7 +30,6 @@ class Character {
         }
         
     }
-    
     //Creation of a function to remove life points
     func receive(damage: Int) {
         health -= damage
@@ -46,4 +43,3 @@ class Character {
         return health <= 0
     }
 }
-
