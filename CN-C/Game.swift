@@ -26,7 +26,7 @@ final class Game {
         if let player1Name = readLine(), !player1Name.isEmpty {
             playerName = player1Name
         } else {
-            print("\(playerName)")
+            print("Your name will be \(playerName)")
         }
         let player1 = Player(name: playerName)
         
@@ -35,7 +35,7 @@ final class Game {
         if let player2Name = readLine(), !player2Name.isEmpty {
             playerName = player2Name
         } else{
-            print("\(playerName)")
+            print("Your name will be \(playerName)")
         }
         let player2 = Player(name: playerName)
         
