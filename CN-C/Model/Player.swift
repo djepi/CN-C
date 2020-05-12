@@ -9,9 +9,9 @@
 import Foundation
 
 //Creation of the player class with an empty array for the characters
-class Player {
+final class Player {
     let name: String                    //Players's name
-    var characters: [Character] = []
+    var characters: [Character] = []    // It's the characters's array before initialisation
     
     init(name: String) {
         self.name = name

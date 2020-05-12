@@ -9,7 +9,7 @@
 import Foundation
 
 //The creation of the Character class gives a name, a weapon and health for each character
-class Character {
+final class Character {
     let name: String
     var weapon: Weapon
     var health: Int = 100   //Here, health is predefined

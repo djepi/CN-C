@@ -9,7 +9,7 @@
 import Foundation
 
 //The GAME class contains all the mechanical logic of the game
-class Game {
+final class Game {
     var player1: Player
     var player2: Player
     var names: [String] = []
@@ -19,15 +19,25 @@ class Game {
         self.player1 = player1
         self.player2 = player2
     }
-    //Static function which defines the players's name
+    //Static function which defines the players's name and which will also give a name if you press the enter key
     static func startGame() -> Game {
         print("Enter player name 1")
-        let player1Name = readLine() ?? "Cosa Nostra"
-        let player1 = Player(name: player1Name)
+        var playerName = "Cosa Nostra"
+        if let player1Name = readLine(), !player1Name.isEmpty {
+            playerName = player1Name
+        } else {
+            print("\(playerName)")
+        }
+        let player1 = Player(name: playerName)
         
         print("\nEnter player name 2")
-        let player2Name = readLine() ?? "Cartel"
-        let player2 = Player(name: player2Name)
+        playerName = "Cartel"
+        if let player2Name = readLine(), !player2Name.isEmpty {
+            playerName = player2Name
+        } else{
+            print("\(playerName)")
+        }
+        let player2 = Player(name: playerName)
         
         return Game(player1: player1, player2: player2)
     }
@@ -48,7 +58,7 @@ class Game {
         
     }
     //This function will be used to choose the name of the characters of each player
-    func createCharacter(player: Player, fallBack: String) -> Character {
+    private func createCharacter(player: Player, fallBack: String) -> Character {
         print("\n\(player.name), what is your character's name \(player.characters.count + 1) ?")
         //If you press the ENTER key, a default name is automatically assigned, with the parameter "fallback"
         var characterName = fallBack
@@ -77,7 +87,7 @@ class Game {
         endGame(counter: counter) //Stop counting laps
     }
     //This function will tell who to play - The player's turn
-    func playRound(round: Int) {
+    private func playRound(round: Int) {
         let result = round % 2
         var player: Player!
         var receiver: Player!
@@ -93,7 +103,7 @@ class Game {
         chooseCharacter(player: player, receiver: receiver)
     }
     //Function which makes a chest appear randomly at the player's turn
-    func shouldDisplayChest(character: Character) {
+    private func shouldDisplayChest(character: Character) {
         let randomNumber = Int.random(in: 0...4)
         if randomNumber == 2 {
             let newWeapon = Weapon.randomWeapon()
@@ -103,7 +113,7 @@ class Game {
         }
     }
     //Function to choose the character with who the player wants to play
-    func chooseCharacter(player: Player, receiver: Player) {
+    private func chooseCharacter(player: Player, receiver: Player) {
         print("Which character do you want to play with ?"
             //Displays the characters's names and their life points
             + "\n1. \(player.characters[0].name) Currently \(player.characters[0].health) life pts"
@@ -150,7 +160,7 @@ class Game {
         
     }
     //Function where we choose to attack or heal
-    func makeAction(character: Character, receiver: Player) {
+    private func makeAction(character: Character, receiver: Player) {
         print("\nWhat do you want to do with \(character.name) ?"
             + "\n1. Attack ?"
             + "\n2. To heal ?")
@@ -168,7 +178,7 @@ class Game {
         }
     }
     //Function which chooses the opposing character to attack and which launches the attack
-    func attackPlayer(receiver: Player, attacker: Character) {
+    private func attackPlayer(receiver: Player, attacker: Character) {
         print("\nWich opposing character do you want to attack ?"
             + "\n1. \(receiver.characters[0].name) Currently \(receiver.characters[0].health) life pts"
             + "\n2. \(receiver.characters[1].name) Currently \(receiver.characters[1].health) life pts"
@@ -225,7 +235,7 @@ class Game {
         }
     }
     //Function that will display the winner
-    func displayWinner() {
+    private func displayWinner() {
         isGameRunning = false
         
         if player1.isDead() {
@@ -236,7 +246,7 @@ class Game {
         
     }
     //Function that will display the requested game statistics
-    func statisticsGame(counter: Int) {
+    private func statisticsGame(counter: Int) {
         //Display number of rounds in the game
         print("In this party, there were \(counter) rounds")
         //Displays the names of player1's characters, their remaining life points, and the weapon used
@@ -253,7 +263,7 @@ class Game {
         
     }
     //Function which indicates the end of the game and which displays the game's statistics
-    func endGame(counter: Int) {
+    private func endGame(counter: Int) {
         if player1.isDead() || player2.isDead() {
             statisticsGame(counter: counter)
             print("\nEND OF GAME")

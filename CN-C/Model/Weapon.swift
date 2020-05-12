@@ -37,7 +37,7 @@ enum WeaponType: Int, CaseIterable {
     
 }
 //The WEAPON class contains a weapon type and damages
-class Weapon {
+final class Weapon {
     let type: WeaponType
     let damage: Int
     
