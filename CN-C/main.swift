@@ -15,3 +15,6 @@ var game: Game = Game.startGame()
 
 game.createTeams() //Call function createdTeams
 game.startBattle() //Call function startBattle
+game.showStatistics() //Call function showStatistics
+game.endGame() //Stop counting laps
+

@@ -12,8 +12,8 @@ import Foundation
 final class Game {
     var player1: Player
     var player2: Player
-    var names: [String] = []
     var isGameRunning = true
+    var counter = 0
     
     init(player1: Player, player2: Player) {
         self.player1 = player1
@@ -43,52 +43,24 @@ final class Game {
     }
     //Function that creates the characters'name for each player (Teams: 3 characters for 2 players).
     func createTeams() {
-        let player1Character1 = createCharacter(player: player1, fallBack: "TONY")
-        player1.characters.append(player1Character1)
-        let player1Character2 = createCharacter(player: player1, fallBack: "JIMMY")
-        player1.characters.append(player1Character2)
-        let player1Character3 = createCharacter(player: player1, fallBack: "RICKY")
-        player1.characters.append(player1Character3)
-        let player2Character1 = createCharacter(player: player2, fallBack: "RICO")
-        player2.characters.append(player2Character1)
-        let player2Character2 = createCharacter(player: player2, fallBack: "PABLO")
-        player2.characters.append(player2Character2)
-        let player2Character3 = createCharacter(player: player2, fallBack: "ARMANDO")
-        player2.characters.append(player2Character3)
-        
+        player1.createCharacter(fallBack: "TONY")
+        player1.createCharacter(fallBack: "JIMMY")
+        player1.createCharacter(fallBack: "RICKY")
+        player2.createCharacter(fallBack: "RICO")
+        player2.createCharacter(fallBack: "PABLO")
+        player2.createCharacter(fallBack: "ARMANDO")
     }
-    //This function will be used to choose the name of the characters of each player
-    private func createCharacter(player: Player, fallBack: String) -> Character {
-        print("\n\(player.name), what is your character's name \(player.characters.count + 1) ?")
-        //If you press the ENTER key, a default name is automatically assigned, with the parameter "fallback"
-        var characterName = fallBack
-        if let playerEntry = readLine(), !playerEntry.isEmpty {
-            //The character's name is stored in playerEntry, if I choose it myself
-            characterName = playerEntry
-        }
-        //If a player name already exists, the function indicates it and there is a return to the character's choice
-        if self.names.contains(characterName) {
-            print("This name is already used ! Choose another one")
-            return createCharacter(player: player, fallBack: fallBack)
-        }
-        //Display a name to the 3 characters of each player, starting from zero and incrementing by 1, with "the count"
-        print("Your character \(player.characters.count + 1) is called \(characterName)")
-        names.append(characterName)
-        return Character(name: characterName)
-        
-    }
+    
     //Function which is used to start counting laps
     func startBattle() {
-        var counter = 0
         while isGameRunning {
             counter = counter + 1
-            playRound(round: counter)
+            playRound()
         }
-        endGame(counter: counter) //Stop counting laps
     }
     //This function will tell who to play - The player's turn
-    private func playRound(round: Int) {
-        let result = round % 2
+    private func playRound() {
+        let result = counter % 2
         var player: Player!
         var receiver: Player!
         
@@ -246,7 +218,7 @@ final class Game {
         
     }
     //Function that will display the requested game statistics
-    private func statisticsGame(counter: Int) {
+    func showStatistics() {
         //Display number of rounds in the game
         print("In this party, there were \(counter) rounds")
         //Displays the names of player1's characters, their remaining life points, and the weapon used
@@ -263,9 +235,8 @@ final class Game {
         
     }
     //Function which indicates the end of the game and which displays the game's statistics
-    private func endGame(counter: Int) {
+    func endGame() {
         if player1.isDead() || player2.isDead() {
-            statisticsGame(counter: counter)
             print("\nEND OF GAME")
         }
     }
