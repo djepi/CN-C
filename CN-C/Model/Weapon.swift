@@ -48,7 +48,7 @@ final class Weapon {
     //Static function with random choice of weapon and damages
     static func randomWeapon() -> Weapon {
         let randomType = WeaponType(rawValue: Int.random(in: 0 ..< WeaponType.allCases.count))!
-        let randomDamage = Int.random(in: 0 ..< 21 )    //The damage will always be between zero and 20 life pts
+        let randomDamage = Int.random(in: 15 ..< 31 )    //The damage will always be between 15 and 30 life pts
         return Weapon(type: randomType, damage: randomDamage)
     }
 }

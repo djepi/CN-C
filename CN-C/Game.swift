@@ -43,12 +43,8 @@ final class Game {
     }
     //Function that creates the characters'name for each player (Teams: 3 characters for 2 players).
     func createTeams() {
-        player1.createCharacter(fallBack: "TONY")
-        player1.createCharacter(fallBack: "JIMMY")
-        player1.createCharacter(fallBack: "RICKY")
-        player2.createCharacter(fallBack: "RICO")
-        player2.createCharacter(fallBack: "PABLO")
-        player2.createCharacter(fallBack: "ARMANDO")
+        player1.createCharacters()
+        player2.createCharacters()
     }
     
     //Function which is used to start counting laps

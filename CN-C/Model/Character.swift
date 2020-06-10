@@ -8,8 +8,12 @@
 
 import Foundation
 
-//The creation of the Character class gives a name, a weapon and health for each character
-final class Character {
+//Thi is the class Character which gives a name, a weapon and health for each character
+final class Character: Equatable {
+    static func == (lhs: Character, rhs: Character) -> Bool {
+        return lhs.name == rhs.name
+    }
+    
     let name: String
     var weapon: Weapon
     var health: Int = 100   //Here, health is predefined

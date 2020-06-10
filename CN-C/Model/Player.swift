@@ -8,12 +8,25 @@
 
 import Foundation
 
-//Creation of the player class with an empty array for the characters
+//Creation of class Player with an empty array for the characters
 final class Player {
     let name: String                    //Players's name
     var characters: [Character] = []    // It's the characters's array before initialisation
+    static let allCharacters: [Character] = [
+        Character(name: "Pablo"),
+        Character(name: "Rico"),
+        Character(name: "Armando"),
+        Character(name: "Ricky"),
+        Character(name: "Tony"),
+        Character(name: "Ricardo"),
+        Character(name: "Al"),
+        Character(name: "Vinnie"),
+        Character(name: "Sony"),
+        Character(name: "Bernardo"),
+    ]
     
-    static var names: [String] = []
+    //It's the array of characters that will be chosen
+    static var choosedCharacters: [Character] = []
     
     init(name: String) {
         self.name = name
@@ -23,24 +36,43 @@ final class Player {
         return  characters[0].isDead() && characters[1].isDead() && characters[2].isDead()
     }
     
-    //This function will be used to choose the name of the characters of each player
-    func createCharacter(fallBack: String) {
-        print("\n\(self.name), what is your character's name \(self.characters.count + 1) ?")
-        //If you press the ENTER key, a default name is automatically assigned, with the parameter "fallback"
-        var characterName = fallBack
-        if let playerEntry = readLine(), !playerEntry.isEmpty {
-            //The character's name is stored in playerEntry, if I choose it myself
-            characterName = playerEntry
+    //This function is used to create the 3 characters of each player
+    func createCharacters() {
+        for _ in 0...2 {
+            createCharacter()
         }
-        //If a player name already exists, the function indicates it and there is a return to the character's choice
-        if Player.names.contains(characterName) {
-            print("This name is already used ! Choose another one")
-            return createCharacter(fallBack: fallBack)
+    }
+    
+    //This function will be used to choose the characters of each player
+    private func createCharacter() {
+        print("\n\(self.name), Please, choose a character \(self.characters.count + 1) ?")
+        for (index, character) in Player.allCharacters.enumerated() {
+            print("\(index). \(character.name) - Weapon: \(character.weapon.type.name) (\(character.weapon.damage)pts)")
         }
-        //Display a name to the 3 characters of each player, starting from zero and incrementing by 1, with "the count"
-        print("Your character \(self.characters.count + 1) is called \(characterName)")
-        Player.names.append(characterName)
-        characters.append(Character(name: characterName))
         
+        print("Enter a number\n")
+        var choosedCharacter: Character?
+        //If you press the ENTER key, a default name is automatically assigned, with the parameter "fallback"
+        if let playerEntry = readLine(), !playerEntry.isEmpty, let index = Int(playerEntry), index < Player.allCharacters.count, index >= 0 {
+            choosedCharacter = Player.allCharacters[index]
+        } else {
+            print("Please enter a valid number")
+        }
+        
+        //If a player name already exists, the function indicates it and there is a return to the character's choice
+        if let choosedCharacter = choosedCharacter, Player.choosedCharacters.contains(choosedCharacter) {
+            print("This character is already used ! Choose another one")
+            return createCharacters()
+        }
+        
+        if let choosedCharacter = choosedCharacter {
+            //Display a name to the 3 characters of each player, starting from zero and incrementing by 1, with "the count"
+            print("The character \(choosedCharacter.name) is now yours")
+            Player.choosedCharacters.append(choosedCharacter)
+            characters.append(choosedCharacter)
+        } else {
+            print("An error occured, please choose a character")
+            return createCharacters()
+        }
     }
 }
