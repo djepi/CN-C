@@ -45,14 +45,13 @@ final class Player {
     
     //This function will be used to choose the characters of each player
     private func createCharacter() {
-        print("\n\(self.name), Please, choose a character \(self.characters.count + 1) ?")
+        print("\(self.name), Please, choose a character \(self.characters.count + 1) ?")
         for (index, character) in Player.allCharacters.enumerated() {
             print("\(index). \(character.name) - Weapon: \(character.weapon.type.name) (\(character.weapon.damage)pts)")
         }
         
         print("Enter a number\n")
         var choosedCharacter: Character?
-        //If you press the ENTER key, a default name is automatically assigned, with the parameter "fallback"
         if let playerEntry = readLine(), !playerEntry.isEmpty, let index = Int(playerEntry), index < Player.allCharacters.count, index >= 0 {
             choosedCharacter = Player.allCharacters[index]
         } else {
@@ -62,7 +61,7 @@ final class Player {
         //If a player name already exists, the function indicates it and there is a return to the character's choice
         if let choosedCharacter = choosedCharacter, Player.choosedCharacters.contains(choosedCharacter) {
             print("This character is already used ! Choose another one")
-            return createCharacters()
+            return createCharacter()
         }
         
         if let choosedCharacter = choosedCharacter {

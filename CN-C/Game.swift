@@ -92,9 +92,11 @@ final class Game {
         if let choice = readLine() {
             switch choice {
             case "1":
-                if player.characters[0].isDead() != true {  //The character is alive
+                //The character is alive
+                if player.characters[0].isDead() != true {
                     choosedCharacter = player.characters[0]
-                } else {                                        //The character is dead
+                } else {
+                    //The character is dead
                     print("\nYou can't choose a dead character !")
                     chooseCharacter(player: player, receiver: receiver)
                     return
