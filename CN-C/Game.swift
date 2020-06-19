@@ -149,10 +149,9 @@ final class Game {
     }
     //Function which chooses the opposing character to attack and which launches the attack
     private func attackPlayer(receiver: Player, attacker: Character) {
-        print("\nWich opposing character do you want to attack ?"
-            + "\n1. \(receiver.characters[0].name) Currently \(receiver.characters[0].health) life pts"
-            + "\n2. \(receiver.characters[1].name) Currently \(receiver.characters[1].health) life pts"
-            + "\n3. \(receiver.characters[2].name) Currently \(receiver.characters[2].health) life pts")
+        print("\nWich opposing character do you want to attack ?")
+        receiver.displayTeam()
+        
         
         var choosedReceiver: Character!
         
@@ -219,17 +218,8 @@ final class Game {
     func showStatistics() {
         //Display number of rounds in the game
         print("In this party, there were \(counter) rounds")
-        //Displays the names of player1's characters, their remaining life points, and the weapon used
-        print("Here are some stats for \(player1.name) :"
-            + "\n For \(player1.characters[0].name), \(player1.characters[0].health) life pts left and his LoveMachine is a \(player1.characters[0].weapon.type.name)"
-            + "\n For \(player1.characters[1].name), \(player1.characters[1].health) life pts left and his LoveMachine is a \(player1.characters[1].weapon.type.name)"
-            + "\n For \(player1.characters[2].name), \(player1.characters[2].health) life pts left and his LoveMachine is a \(player1.characters[2].weapon.type.name)",
-            
-            ////Displays the names of player2's characters, their remaining life points, and the weapon used
-            "\nHere are some stats for \(player2.name) :"
-                + "\n For \(player2.characters[0].name), \(player2.characters[0].health) life pts left and his LoveMachine is a \(player2.characters[0].weapon.type.name)"
-                + "\n For \(player2.characters[1].name), \(player2.characters[1].health) life pts left and his LoveMachine is a \(player2.characters[1].weapon.type.name)"
-                + "\n For \(player2.characters[2].name), \(player2.characters[2].health) life pts left and his LoveMachine is a \(player2.characters[2].weapon.type.name)")
+        player1.showStatistics()
+        player2.showStatistics()
         
     }
     //Function which indicates the end of the game and which displays the game's statistics

@@ -79,8 +79,13 @@ final class Player {
     func displayTeam () {
         for i in 0...2 {
             print("\n\(i+1). \(self.characters[i].name) Currently \(self.characters[i].health) life pts")
-            
-            
+        }
+    }
+    func showStatistics () {
+        //Displays the names of player1's characters, their remaining life points, and the weapon used
+        print("Here are some stats for \(name) :")
+        for i in 0...2 {
+            print("\n For \(characters[i].name), \(characters[i].health) life pts left and his LoveMachine is a \(characters[i].weapon.type.name)")
         }
     }
 }
