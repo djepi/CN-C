@@ -72,6 +72,15 @@ final class Player {
         } else {
             print("An error occured, please choose a character")
             return createCharacters()
+            
+            
+        }
+    }
+    func displayTeam () {
+        for i in 0...2 {
+            print("\n\(i+1). \(self.characters[i].name) Currently \(self.characters[i].health) life pts")
+            
+            
         }
     }
 }

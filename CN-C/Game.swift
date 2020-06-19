@@ -82,11 +82,11 @@ final class Game {
     }
     //Function to choose the character with who the player wants to play
     private func chooseCharacter(player: Player, receiver: Player) {
-        print("Which character do you want to play with ?"
-            //Displays the characters's names and their life points
-            + "\n1. \(player.characters[0].name) Currently \(player.characters[0].health) life pts"
-            + "\n2. \(player.characters[1].name) Currently \(player.characters[1].health) life pts"
-            + "\n3. \(player.characters[2].name) Currently \(player.characters[2].health) life pts")
+        print("Which character do you want to play with ?")
+        player.displayTeam()
+        
+        //Displays the characters's names and their life points
+        
         var choosedCharacter: Character!
         
         if let choice = readLine() {
